@@ -1,0 +1,40 @@
+<html lang='en'>
+
+<head>
+    <title>NPS Search</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="main.css">
+</head>
+
+<body>
+    <form class='searchForm'>
+        <legend>Find a National Park Near You</legend>
+        <fieldset>
+            <label for='search'>search</label>
+            <input type="text" class='search' placeholder="enter city or state...">
+            <label for='number'>max results</label>
+            <input type='number' class='number'>
+            <button type='submit' class='submitForm'>search</button>
+        </fieldset>
+    </form>
+
+    <section class="hidden">
+        <ul class='resultsList'>
+            <!-- <li>
+                <h3>${responseJson.data[0].name}</h3>
+                <a href="${responseJson.data[0].url}">website</a>
+                <p>${responseJson.data[0].description}</p>
+            </li> -->
+
+        </ul>
+    </section>
+</body>
+<script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+    crossorigin="anonymous"></script>
+<script src='main.js' type='text/javascript'></script>
+
+</html>
+
+<!-- responseJson.data[0].name
+responseJson.data[0].url
+responseJson.data[0].description -->
