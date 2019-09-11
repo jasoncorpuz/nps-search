@@ -13,7 +13,14 @@ function handleSubmit() {
         const search = $('.search').val();
         const maxResults = $('.number').val();
         console.log(search, maxResults)
-        getResults(search,maxResults)
+        //getResults(search,maxResults)
+        if(search.includes(',') || search.length === 2){
+            console.log(search+"statecode "+maxResults);
+            getNpsStateCode(search,maxResults);
+          } else{
+            console.log(search+"state/city name "+maxResults);
+            getResults(search, maxResults);
+            }
     
     })
 };
@@ -28,14 +35,36 @@ function formatQueryString(params) {
 }
 
 
-
-
 function getResults(query,maxResults=10){
     //generateurl then fetch
     console.log(`${query} test ${maxResults}`)
     const params = {
         'api_key': key,
         q: query,
+        limit: maxResults
+    };
+    const queryString = formatQueryString(params)
+    const url = searchUrl + '?' +queryString;
+    console.log(url)
+    fetch(url)
+        .then(response => {
+            if (response.ok) {
+                return response.json();
+            }
+            throw new Error(response.statusText);
+        })
+        // .then(responseJson => console.log(JSON.stringify(responseJson))) // logs JSON to console
+        .then(responseJson => renderInfo(responseJson)) //hand off
+}
+
+
+
+function getNpsStateCode(query,maxResults=10){
+    //generateurl then fetch
+    console.log(`${query} test ${maxResults}`)
+    const params = {
+        'api_key': key,
+        stateCode: query,
         limit: maxResults
     };
     const queryString = formatQueryString(params)

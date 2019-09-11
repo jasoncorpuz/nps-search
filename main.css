@@ -18,3 +18,8 @@ input {
 .hidden {
     display: block;
 }
+
+.search{
+    width:340px;
+    height:40px;
+}
